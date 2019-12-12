@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登陆界面</title>
+</head>
+<body>
+ <div>
+     <form  action="/login" method="post">
+         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+         <table  style="margin: auto">
+             <tr>
+                 <td>用户名：</td><td><input type="text" id="username" name="username"/></td>
+             </tr>
+             <tr>
+                 <td> 密  码: </td><td><input type="password" id="password" name="password"/></td>
+             </tr>
+             <tr>
+                 <td> 记住密码: </td><td><input type="checkbox" value="true"  name="remember-me"/></td>
+             </tr>
+             <tr>
+                 <td></td>
+                 <td><input type="submit" value="登陆"/></td>
+             </tr>
+         </table>
+ </form>
+ </div>
+</body>
