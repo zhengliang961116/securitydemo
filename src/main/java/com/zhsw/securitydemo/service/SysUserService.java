@@ -2,6 +2,8 @@ package com.zhsw.securitydemo.service;
 
 import com.zhsw.securitydemo.entity.SysUser;
 
+import java.util.List;
+
 /**
  * @Author: zhengliang
  * @Description: 用户service接口
@@ -9,4 +11,5 @@ import com.zhsw.securitydemo.entity.SysUser;
  */
 public interface SysUserService {
     SysUser selectByUserName(String username);
+    List<String> selectNoAuthUrl();
 }

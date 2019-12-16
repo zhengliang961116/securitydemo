@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class Util {
     public static void main(String[] args) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String s= encoder.encode("123456");
+        String s= encoder.encode("secret");
         System.out.println(s);
     }
 }

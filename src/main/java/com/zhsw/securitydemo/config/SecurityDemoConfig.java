@@ -33,10 +33,11 @@ import java.util.List;
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
 public class SecurityDemoConfig extends WebSecurityConfigurerAdapter {
-    @Resource
+    @Autowired
     private SysUserService sysUserService;
-    @Resource
+    @Autowired
     private RememberMeHandler rememberMeHandler;
+
 
 
     /**
@@ -46,6 +47,7 @@ public class SecurityDemoConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         //配置登陆界面
         http.formLogin().loginPage("/login").permitAll();
         //配置登陆成功界面
@@ -62,31 +64,15 @@ public class SecurityDemoConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedHandler(new AuthLimitHandler());
         http.authorizeRequests().
                 //所有得静态文件都可访问
-                antMatchers("/css/**", "/image/**", "/js/**").permitAll()
+                //antMatchers("/css/**", "/image/**", "/js/**").permitAll()
+                //配置不授权即可访问的资源路径
+                antMatchers(sysUserService.selectNoAuthUrl().toString()).permitAll()
                 //动态url权限
                 .withObjectPostProcessor(new DefinedObjectPostProcessor())
                 //url决策
                 .accessDecisionManager(accessDecisionManager())
                 .anyRequest().fullyAuthenticated();
     }
-
-//    /**
-//     * 内存用户
-//     * @param auth
-//     * @throws Exception
-//     */
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-//                .withUser("user").password(new BCryptPasswordEncoder().encode("123456")).roles("user")
-//                .and()
-//                .withUser("admin").password(new BCryptPasswordEncoder().encode("admin")).roles("admin")
-//                .and()
-//                .withUser("one").password(new BCryptPasswordEncoder().encode("123456")).roles("ONE")
-//                .and()
-//                .withUser("two").password(new BCryptPasswordEncoder().encode("123456")).roles("TWO");
-//    }
-
     /**
      * 配置用户名验证
      * @return

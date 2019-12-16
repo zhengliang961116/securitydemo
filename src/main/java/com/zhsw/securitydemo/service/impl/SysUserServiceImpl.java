@@ -6,6 +6,7 @@ import com.zhsw.securitydemo.service.SysUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author: zhengliang
@@ -19,5 +20,10 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public SysUser selectByUserName(String username) {
         return sysUserMapper.selectByUserName(username);
+    }
+
+    @Override
+    public List<String> selectNoAuthUrl() {
+        return sysUserMapper.selectNoAuthUrl();
     }
 }

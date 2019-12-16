@@ -29,4 +29,12 @@ public class AuthController {
     public String  three(){
         return "three";
     }
+    @GetMapping("/css")
+    public String  css(){
+        return "css";
+    }
+    @GetMapping("/image")
+    public String  image(){
+        return "image";
+    }
 }
