@@ -1,11 +1,9 @@
 package com.zhsw.securitydemo.controller;
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.RolesAllowed;
+
 
 /**
  * @Author: zhengliang
@@ -37,4 +35,13 @@ public class AuthController {
     public String  image(){
         return "image";
     }
+    @GetMapping("/js")
+    public String  js(){
+        return "js";
+    }
+    @GetMapping("/common")
+    public String  common(){
+        return "common";
+    }
+
 }

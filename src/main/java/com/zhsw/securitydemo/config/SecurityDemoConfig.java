@@ -21,7 +21,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +61,9 @@ public class SecurityDemoConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService());
         //用户权限不足处理
         http.exceptionHandling().accessDeniedHandler(new AuthLimitHandler());
-        http.authorizeRequests().
+        http.authorizeRequests()
                 //所有得静态文件都可访问
                 //antMatchers("/css/**", "/image/**", "/js/**").permitAll()
-                //配置不授权即可访问的资源路径
-                antMatchers(sysUserService.selectNoAuthUrl().toString()).permitAll()
                 //动态url权限
                 .withObjectPostProcessor(new DefinedObjectPostProcessor())
                 //url决策

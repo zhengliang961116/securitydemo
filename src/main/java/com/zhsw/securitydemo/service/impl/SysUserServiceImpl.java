@@ -22,8 +22,4 @@ public class SysUserServiceImpl implements SysUserService {
         return sysUserMapper.selectByUserName(username);
     }
 
-    @Override
-    public List<String> selectNoAuthUrl() {
-        return sysUserMapper.selectNoAuthUrl();
-    }
 }

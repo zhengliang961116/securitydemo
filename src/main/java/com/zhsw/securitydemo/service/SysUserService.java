@@ -11,5 +11,4 @@ import java.util.List;
  */
 public interface SysUserService {
     SysUser selectByUserName(String username);
-    List<String> selectNoAuthUrl();
 }

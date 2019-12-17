@@ -15,5 +15,4 @@ import java.util.List;
 public interface SysUserMapper {
     SysUser selectByUserName(@Param("username") String username);
 
-    List<String> selectNoAuthUrl();
 }

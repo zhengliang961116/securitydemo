@@ -1,14 +1,12 @@
 package com.zhsw.securitydemo.handler;
 
-import com.zhsw.securitydemo.mapper.SysMenuMapper;
 import com.zhsw.securitydemo.service.SysMenuService;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+
 
 import javax.annotation.Resource;
 import java.util.Collection;
