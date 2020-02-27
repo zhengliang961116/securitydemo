@@ -20,4 +20,13 @@ mybatis:
   type-aliases-package: com.zhsw.sercuritydemo.entity
   mapper-locations: classpath:mapper/*.xml
 
+security1:
+  permitAllList:
+      - /css/**
+      - /js/**
+      - /image/**
+
+  anonymousList:
+    - /swagger2/**
+
 

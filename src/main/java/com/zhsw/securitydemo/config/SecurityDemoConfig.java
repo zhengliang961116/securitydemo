@@ -1,5 +1,6 @@
 package com.zhsw.securitydemo.config;
 
+import com.zhsw.securitydemo.config.properties.SecurityUrlProperties;
 import com.zhsw.securitydemo.entity.SysUser;
 import com.zhsw.securitydemo.handler.*;
 import com.zhsw.securitydemo.service.SysUserService;
@@ -36,7 +37,8 @@ public class SecurityDemoConfig extends WebSecurityConfigurerAdapter {
     private SysUserService sysUserService;
     @Autowired
     private RememberMeHandler rememberMeHandler;
-
+    @Autowired
+    private SecurityUrlProperties securityUrlProperties;
 
 
     /**
@@ -63,7 +65,8 @@ public class SecurityDemoConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedHandler(new AuthLimitHandler());
         http.authorizeRequests()
                 //所有得静态文件都可访问
-                //antMatchers("/css/**", "/image/**", "/js/**").permitAll()
+                .antMatchers(securityUrlProperties.getPermitAllList().toString()).permitAll()
+                .antMatchers(securityUrlProperties.getAnonymousList().toString()).anonymous()
                 //动态url权限
                 .withObjectPostProcessor(new DefinedObjectPostProcessor())
                 //url决策
